@@ -1,4 +1,4 @@
-# hir panchal – personal website
+# personal website
 
 This is the source code for my personal website, built with HTML, CSS, and JavaScript.  
 I designed and coded it from scratch to showcase my work, experience, and interests.
