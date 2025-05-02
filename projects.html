@@ -121,6 +121,51 @@
       max-height: 700px;
       border-radius: 12px;
     }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5em;
+        padding: 0 20px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 20px 10px;
+      }
+
+      nav a {
+        font-size: 1em;
+        padding: 6px 12px;
+      }
+
+      .project-block {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .project-info, .project-media {
+        flex: 1 1 100%;
+        padding: 0 10px;
+      }
+
+      .project-info h3 {
+        font-size: 1.5em;
+      }
+
+      .pill-group {
+        grid-template-columns: 1fr;
+        font-size: 0.9em;
+      }
+
+      .pill {
+        padding: 6px 10px;
+      }
+
+      .project-media video {
+        max-height: 300px;
+      }
+    }
 
   </style>
 </head>

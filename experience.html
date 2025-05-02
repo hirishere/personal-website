@@ -65,6 +65,7 @@
 
     .exp-block {
       margin-bottom: 220px;
+      margin-left: 20px;
       text-align: left;
     }
 
@@ -99,6 +100,42 @@
       font-size: 1.5em;
       line-height: 1.6;
       margin: 8px 0;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5em;
+        padding: 0 20px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 20px 10px;
+      }
+
+      nav a {
+        font-size: 1em;
+        padding: 6px 12px;
+      }
+
+      .exp-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .exp-date {
+        font-size: 1.2em;
+      }
+
+      .exp-block h3,
+      .exp-block h4 {
+        font-size: 1.5em;
+      }
+
+      .exp-block p {
+        font-size: 1em;
+      }
     }
 
   </style>

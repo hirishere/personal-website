@@ -11,6 +11,7 @@ Live site: [hirishere.github.io/personal-website](https://hirishere.github.io/pe
 - Animated section transitions
 - Interactive mind map + timeline
 - Project videos + descriptions
+- Mobile compatible
 
 ## Tech stack
 
