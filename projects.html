@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>hir panchal - projects</title>
+  <style>
+    .green-trim {
+      height: 20px;
+      background-color: #1e9258;
+      width: 100%;
+    }
+
+    .top-trim {
+      position: relative;
+      top: 0;
+    }
+
+    .bottom-trim {
+      position: relative;
+      bottom: 0;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin: 40px 20px 20px 20px;
+    }
+
+    body {
+      background-color: #def0e7;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    h1 {
+      padding: 0 40px;
+      color: #1e9258;
+      font-size: 4em
+    }
+
+    nav a {
+      background-color: #1e9258;
+      font-size: 1em;
+      color: #ebfff5;
+      padding: 10px 20px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      background-color: #ffffff;
+      color: #1e9258;
+    }
+
+    .projects-section {
+      max-width: 1250px;
+      margin: 20px auto;
+    }
+
+    .project-block {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 80px;
+      gap: 40px;
+    }
+
+    .project-info {
+      flex: 1 1 400px;
+    }
+
+    .project-info h3 {
+      font-size: 2em;
+      color: #1e9258;
+      margin-bottom: 10px;
+    }
+
+    .pill-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr; 
+      gap: 10px 15px;
+      margin-bottom: 20px;
+    }
+
+    .pill {
+      display: inline-block;
+      background-color: #1e9258;
+      color: #ebfff5;
+      padding: 8px 14px;
+      margin: 6px 6px 0 0;
+      border-radius: 50px;
+      font-size: 1em;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .code-link {
+      font-size: 1em;
+      color: #1e9258;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .code-link:hover {
+      font-weight: bold;
+    }
+
+    .project-media {
+      flex: 1 1 700px;
+      text-align: center;
+    }
+
+    .project-media video {
+      width: 100%;
+      max-height: 700px;
+      border-radius: 12px;
+    }
+
+  </style>
+</head>
+<body>
+   
+    <div class="green-trim top-trim"></div>
+
+    <nav class="nav">
+        <a href="home.html">home</a> 
+        <a href="home.html#about" class="fade-link">about</a> 
+        <a href="experience.html" class="fade-link">experience</a>
+        <a href="projects.html" class="fade-link">projects</a> 
+        <a href="home.html#contact" class="fade-link">contact</a>
+    </nav>
+
+    <h1>projects</h1>
+
+    <section class="projects-section">
+      <div class="project-block">
+        <div class="project-info">
+          <h3>image processing editor</h3>
+          <div class="pill-group">
+            <span class="pill">Java</span>
+            <span class="pill">OOP</span>
+            <span class="pill">Swing GUI</span>
+            <span class="pill">MVC</span>
+            <span class="pill">image processing</span>
+          </div>
+          <a href="https://github.com/hirishere/image-processor" target="_blank" class="code-link">github repo ↗</a>
+        </div>
+        <div class="project-media">
+          <video id="imageEditorDemo" controls muted playsinline preload="metadata">
+            <source src="image-processor-demo.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>    
+
+    <div class="green-trim bottom-trim" id="contact"></div>
+    
+    <script>
+        // fade in page and animate elements
+        window.addEventListener("DOMContentLoaded", () => {
+          requestAnimationFrame(() => {
+            document.body.style.opacity = "1";
+          });
+          setTimeout(() => {
+            document.querySelector(".text").classList.add("active");
+          }, 750);
+          setTimeout(() => {
+            document.querySelector(".nav").classList.add("active");
+          }, 1500);
+    
+          // fade out on any link click
+          document.querySelectorAll(".fade-link").forEach(link => {
+            link.addEventListener('click', (e) => {
+              e.preventDefault();
+              const href = link.getAttribute('href');
+              // fade out after pause
+              setTimeout(() => {
+                document.body.style.opacity = "0";
+              }, 500);
+    
+              setTimeout(() => {
+                window.location.href = href;
+              }, 1000);
+            });
+          });
+        });
+
+        const demoVideo = document.getElementById("imageEditorDemo");
+        demoVideo.playbackRate = 2.5;
+    </script>
+</body>
+</html>
+    
+    

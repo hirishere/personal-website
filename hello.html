@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hir panchal - welcome</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #def0e7;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #helloMessage, #helloMessage1, #helloMessage2 {
+      font-size: 4em;
+      font-weight: bold;
+      color: #1e9258;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="helloMessage">hello world</div>
+
+  <script>
+    const helloMessage = document.getElementById("helloMessage");
+    const textSteps = ["hello world", "hello world ;", "hello world ;)"];
+    let currentStep = 0;
+  
+    function typeNext() {
+      if (currentStep < textSteps.length) {
+        helloMessage.textContent = textSteps[currentStep];
+        currentStep++;
+        setTimeout(typeNext, 400); // typing speed
+      } else {
+        // fade out after pause
+        setTimeout(() => {
+          helloMessage.style.opacity = "0";
+        }, 500);
+  
+        // redirect
+        setTimeout(() => {
+          window.location.href = "home.html";
+        }, 1000);
+      }
+    }
+  
+    // fade in
+    requestAnimationFrame(() => {
+      helloMessage.style.opacity = "1";
+    });
+  
+    // start typing
+    setTimeout(typeNext, 500);
+  </script>
+
+</body>
+</html>

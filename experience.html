@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>hir panchal - experience</title>
+  <style>
+    .green-trim {
+      height: 20px;
+      background-color: #1e9258;
+      width: 100%;
+    }
+
+    .top-trim {
+      position: relative;
+      top: 0;
+    }
+
+    .bottom-trim {
+      position: relative;
+      bottom: 0;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin: 40px 20px 20px 20px;
+    }
+
+    body {
+      background-color: #def0e7;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    h1 {
+      padding: 0 40px;
+      color: #1e9258;
+      font-size: 4em
+    }
+
+    nav a {
+      background-color: #1e9258;
+      font-size: 1em;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      background-color: #ffffff;
+      color: #1e9258;
+    }
+
+    .experience-section {
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+
+    .exp-block {
+      margin-bottom: 220px;
+      text-align: left;
+    }
+
+    .exp-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 20px;
+    }
+
+    .exp-date {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #333;
+      white-space: nowrap;
+    }
+
+    .exp-block h3 {
+      font-size: 2.5em;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .exp-block h4 {
+      font-size: 2.5em;
+      font-weight: normal;
+      color: #333;
+      margin: 0;
+    }
+
+    .exp-block p {
+      font-size: 1.5em;
+      line-height: 1.6;
+      margin: 8px 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="green-trim top-trim"></div>
+
+    <nav class="nav">
+        <a href="home.html">home</a> 
+        <a href="home.html#about" class="fade-link">about</a> 
+        <a href="experience.html" class="fade-link">experience</a>
+        <a href="projects.html" class="fade-link">projects</a> 
+        <a href="home.html#contact" class="fade-link">contact</a>
+    </nav>
+
+    <h1>experience</h1>
+
+    <section class="experience-section">
+      <div class="exp-block">
+        <div class="exp-title-row">
+          <h3>fundamentals of cs 1 teaching assistant</h3>
+          <span class="exp-date">sept. 2024 - present</span>
+        </div>
+        <h4>khoury college of computer sciences, northeastern university</h4>
+        <p>maintain expertise in course progress through an ongoing review of material and weekly meetings. 
+          participate in regular training to refine teaching methods. frade 50-80+ student coding assignments weekly</p>
+        <p>facilitate 4-5 weekly office hours to provide direct debugging & conceptual support and address course-related challenges. 
+          lead weekly labs of 20+ students, offering hands-on guidance with fundamental CS concepts</p>
+      </div>
+    </section>    
+
+    <div class="green-trim bottom-trim" id="contact"></div>
+    
+    <script>
+        // fade in page and animate elements
+        window.addEventListener("DOMContentLoaded", () => {
+          requestAnimationFrame(() => {
+            document.body.style.opacity = "1";
+          });
+          setTimeout(() => {
+            document.querySelector(".text").classList.add("active");
+          }, 750);
+          setTimeout(() => {
+            document.querySelector(".nav").classList.add("active");
+          }, 1500);
+    
+          // fade out on any link click
+          document.querySelectorAll(".fade-link").forEach(link => {
+            link.addEventListener('click', (e) => {
+              e.preventDefault();
+              const href = link.getAttribute('href');
+              // fade out after pause
+              setTimeout(() => {
+                document.body.style.opacity = "0";
+              }, 500);
+    
+              setTimeout(() => {
+                window.location.href = href;
+              }, 1000);
+            });
+          });
+        });
+    </script>
+</body>
+</html>
+    
