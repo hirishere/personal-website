@@ -6,23 +6,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>hir panchal</title>
   <style>
+    /* === RESET & BASE STYLES === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #def0e7;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    /* === COLOR VARIABLES === */
+    :root {
+      --primary-green: #1e9258;
+      --dark-green: #15734a;
+      --light-green: #ebfff5;
+      --bg-green: #def0e7;
+      --bg-light: #eaf9f1;
+      --text-dark: #333;
+      --text-medium: #444;
+    }
+
+    /* === TYPOGRAPHY === */
+    h1 {
+      font-size: 7em;
+      color: var(--primary-green);
+      margin: 15px 0 10px;
+    }
+
+    h2, h3 {
+      font-size: 2.5em;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    h4 {
+      font-size: 2.5em;
+      color: var(--text-dark);
+      margin: 0 0 10px;
+    }
+
+    /* === LAYOUT COMPONENTS === */
     .green-trim {
       height: 20px;
-      background-color: #1e9258;
+      background-color: var(--primary-green);
       width: 100%;
     }
 
-    .top-trim {
-      position: relative;
-      top: 0;
+    .section {
+      padding: 60px 20px;
     }
 
-    .bottom-trim {
-      position: relative;
-      bottom: 0;
+    .section-title {
+      font-size: 4em;
+      color: var(--primary-green);
+      text-align: center;
+      margin-bottom: 50px;
     }
 
-    .profile {
+    /* === HEADER/HERO SECTION === */
+    .hero {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -30,28 +81,29 @@
       flex-wrap: wrap;
     }
 
-    .profile-pic {
-      width: 400px;
-      height: 600px;
-      padding: 20px 20px;
-      object-fit: cover;
-      border-radius: 150px;
-    }
-
-    .text {
+    .hero-text {
       text-align: right;
       max-width: 900px;
-      padding: 20px 20px;
+      padding: 20px;
       opacity: 0;
       transform: translateX(-30px);
       transition: opacity 1s ease, transform 1s ease;
     }
 
-    .text.active {
+    .hero-text.active {
       opacity: 1;
       transform: translateX(0);
     }
 
+    .profile-pic {
+      width: 400px;
+      height: 600px;
+      padding: 20px;
+      object-fit: cover;
+      border-radius: 150px;
+    }
+
+    /* === NAVIGATION === */
     .nav {
       display: flex;
       justify-content: center;
@@ -69,44 +121,19 @@
       transform: translateX(0);
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      text-align: center;
-      opacity: 0;
-      transition: opacity 1s ease;
-      background-color: #def0e7;
-    }
-
-    h1 {
-      font-size: 7em;
-      color: #1e9258;
-      margin-top: 15px;
-      margin-bottom: 10px;
-    }
-
-    h2, h3 {
-      font-size: 2.5em;
-      color: #333;
-      margin: 0;
-    }
-
-    nav a {
-      background-color: #1e9258;
+    .nav a {
+      background-color: var(--primary-green);
       font-size: 2em;
-      color: #ebfff5;
+      color: var(--light-green);
       padding: 10px 20px;
       border-radius: 100px;
       text-decoration: none;
       font-weight: bold;
+      transition: background-color 0.3s ease;
     }
 
-    nav a:hover {
-      background-color: #15734a;
+    .nav a:hover {
+      background-color: var(--dark-green);
     }
 
     .floating-home {
@@ -114,10 +141,10 @@
       top: 40px;
       right: 30px;
       font-size: 1em;
-      color: #1e9258;
+      color: var(--primary-green);
       text-decoration: none;
       font-weight: bold;
-      background-color: #ebfff5;
+      background-color: var(--light-green);
       padding: 6px 12px;
       border-radius: 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -127,8 +154,8 @@
       transition: opacity 0.3s ease;
     }
 
-
-    #about-me {
+    /* === ABOUT SECTION === */
+    .about-section {
       padding: 100px 75px;
       display: flex;
       flex-direction: column;
@@ -143,26 +170,26 @@
       gap: 40px;
     }
 
-    .about-blurb {
+    .about-text {
       max-width: 500px;
       font-size: 1.5em;
       font-weight: bold;
       text-align: left;
-      padding: 20px 20px;
-      color: #333;
+      padding: 20px;
+      color: var(--text-dark);
     }
 
-    .about-blurb h2 {
+    .about-text h2 {
       font-size: 3em;
-      color: #1e9258;
+      color: var(--primary-green);
       margin-bottom: 10px;
     }
 
     .journey-button {
       display: inline-block;
       padding: 10px 25px;
-      background-color: #1e9258;
-      color: #ebfff5;
+      background-color: var(--primary-green);
+      color: var(--light-green);
       font-size: 1.25em;
       font-weight: bold;
       border-radius: 100px;
@@ -172,26 +199,26 @@
     }
 
     .journey-button:hover {
-      background-color: #15734a;
+      background-color: var(--dark-green);
     }
 
-    .memap {
+    /* === SKILLS MAP === */
+    .skills-map {
       position: relative;
       width: 600px;
       height: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 20px 0 0;
-      margin-bottom: 50px;
+      padding: 0 20px 50px 0;
     }
 
     .center-node {
       width: 200px;
       height: 200px;
-      background-color: #1e9258;
+      background-color: var(--primary-green);
       border-radius: 66% 34% 44% 56% / 56% 44% 66% 34%;
-      color: #ebfff5;
+      color: var(--light-green);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -202,22 +229,20 @@
 
     .orbit-node {
       position: absolute;
-      background-color: #ebfff5;
-      border: 10px solid #1e9258;
+      background-color: var(--light-green);
+      border: 10px solid var(--primary-green);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      transform-origin: center center;
-      color: #1e9258;
+      transition: transform 0.3s ease;
+      color: var(--primary-green);
       text-decoration: none;
       font-weight: bold;
       font-size: 1.5em;
     }
 
     .orbit-node span {
-      display: inline-block;
       transition: transform 0.3s ease;
     }
 
@@ -228,49 +253,37 @@
     .orbit-node:nth-child(2) { 
       transform: rotate(0deg) translate(250px) rotate(-0deg); 
       border-radius: 60% 40% 65% 35% / 55% 45% 55% 45%;
-      width: 200px;
-      height: 200px;
+      width: 200px; height: 200px;
     }
     .orbit-node:nth-child(3) { 
       transform: rotate(72deg) translate(250px) rotate(-72deg); 
       border-radius: 50% 60% 40% 70% / 60% 50% 40% 50%;
-      width: 225px;
-      height: 225px;
+      width: 225px; height: 225px;
     }
     .orbit-node:nth-child(4) { 
       transform: rotate(144deg) translate(250px) rotate(-144deg);
       border-radius: 55% 45% 60% 40% / 50% 60% 40% 50%; 
-      width: 175px;
-      height: 175px;
+      width: 175px; height: 175px;
     }
     .orbit-node:nth-child(5) { 
       transform: rotate(216deg) translate(250px) rotate(-216deg); 
       border-radius: 62% 38% 48% 52% / 42% 58% 62% 38%;
-      width: 250px;
-      height: 250px;
+      width: 250px; height: 250px;
     }
     .orbit-node:nth-child(6) { 
       transform: rotate(288deg) translate(250px) rotate(-288deg);
       border-radius: 58% 42% 53% 47% / 47% 53% 58% 42%; 
-      width: 150px;
-      height: 150px;
+      width: 150px; height: 150px;
     }
 
-    #journey, #adventures {
-      padding: 50px 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #ebfff5;
-    }
-
-    .journey-scroll {
+    /* === UNIVERSAL SCROLL CONTAINER === */
+    .scroll-section {
       padding: 80px 40px;
       text-align: center;
     }
 
-    .journey-scroll h2 {
-      color: #1e9258;
+    .scroll-section h2 {
+      color: var(--primary-green);
       font-size: 2.5em;
       margin-bottom: 40px;
     }
@@ -279,12 +292,21 @@
       position: relative;
     }
 
+    .scroll-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 40px;
+      padding: 10px;
+      -webkit-overflow-scrolling: touch;
+    }
+
     .scroll-arrow {
       position: absolute;
-      bottom: 0; 
+      bottom: 0;
       right: 20px;
       font-size: 2.5em;
-      color: #1e9258;
+      color: var(--primary-green);
       animation: bounceArrow 1.5s infinite ease-in-out;
       pointer-events: none;
       opacity: 1;
@@ -296,29 +318,18 @@
       50% { transform: translateX(10px); }
     }
 
-    .card-scroll-container {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-padding: 0 10px;
-      gap: 60px;
-      padding: 10px; 
-      -webkit-overflow-scrolling: touch;
-    }
-
+    /* === JOURNEY CARDS === */
     .journey-card {
       flex: 0 0 80vw;
-      scroll-snap-align: center;
+      scroll-snap-align: start;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      overflow-wrap: break-word;
-      word-break: break-word;
-      box-sizing: border-box; 
     }
 
-    .journey-card video, .journey-card img {
+    .journey-card video, 
+    .journey-card img {
       width: 100%;
       max-height: 550px;
       object-fit: contain;
@@ -329,93 +340,12 @@
       margin-top: 12px;
       font-size: 1.25em;
       font-weight: bold;
-      color: #333;
+      color: var(--text-dark);
       text-align: center;
       max-width: 80%;
     }
 
-    .academics-section {
-      padding: 60px 20px;
-      background-color: #eaf9f1;
-      text-align: left;
-    }
-
-    .academics-section h2 {
-      font-size: 4em;
-      color: #1e9258;
-      margin-bottom: 50px;
-      text-align: center;
-    }
-
-    .edu-block {
-      margin-bottom: 15px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .edu-block h3 {
-      font-size: 2.5em;
-      color: #333;
-      margin-bottom: 0;
-    }
-
-    .edu-block h4 {
-      font-size: 2.5em;
-      color: #333;
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-
-    .edu-block p {
-      font-size: 1.5em;
-      color: #444;
-      margin: 5px 0;
-    }
-
-    .edu-block a {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 1.5em;
-      font-weight: 500;
-      color: #1e9258;
-      text-decoration: none;
-    }
-
-    .edu-block a:hover {
-      font-weight: bold;
-    }
-
-    .edu-block .gpa {
-      color: #1e9258;
-      font-weight: bold;
-      margin-top: 15px;
-      margin-bottom: 20px;
-    }
-
-    .coursework-section {
-      padding: 60px 20px;
-      background-color: #ebfff5;
-      text-align: left;
-    }
-
-    .coursework-section h2 {
-      font-size: 4em;
-      color: #1e9258;
-      margin-left: 40px;
-      margin-bottom: 60px;
-    }
-
-    .course-semester-grid {
-      display: flex;
-      gap: 60px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 10px 20px 30px;
-      margin-left: 25px;
-      -webkit-overflow-scrolling: touch;
-    }
-
+    /* === COURSEWORK PILLS === */
     .semester {
       flex: 0 0 400px;
       scroll-snap-align: start;
@@ -424,16 +354,15 @@
 
     .semester h3 {
       font-size: 2em;
-      color: #1e9258;
-      margin-right: 50px;
+      color: var(--primary-green);
       margin-bottom: 12px;
       text-align: center;
     }
 
     .pill {
       display: inline-block;
-      background-color: #1e9258;
-      color: #ebfff5;
+      background-color: var(--primary-green);
+      color: var(--light-green);
       padding: 8px 14px;
       margin: 6px 0;
       border-radius: 50px;
@@ -441,36 +370,90 @@
       font-weight: 500;
       text-align: center;
       width: 80%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .pill:hover {
+      background-color: var(--dark-green);
     }
 
     .course-prompt {
       text-align: left;
       font-size: 2.5em;
-      color: #1e9258;
+      color: var(--primary-green);
       margin: 60px 80px;
     }
 
     .course-detail {
-      background-color: #ebfff5;
-      border-top: 4px solid #1e9258;
+      background-color: var(--light-green);
+      border-top: 4px solid var(--primary-green);
       max-width: 1300px;
-      margin-left: 40px;
+      margin: 0 auto;
+      padding: 20px;
       text-align: left;
+      display: none;
     }
 
     .course-detail h3 {
-      color: #1e9258;
+      color: var(--primary-green);
       font-size: 2em;
       margin-bottom: 10px;
     }
 
     .course-detail p {
       font-size: 2em;
-      color: #333;
+      color: var(--text-dark);
     }
 
+    /* === ACADEMIC SECTIONS === */
+    .academic-section {
+      background-color: var(--bg-light);
+      text-align: left;
+    }
+
+    .academic-block {
+      margin-bottom: 40px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .academic-block h3 {
+      font-size: 2.5em;
+      color: var(--text-dark);
+      margin-bottom: 0;
+    }
+
+    .academic-block p {
+      font-size: 1.5em;
+      color: var(--text-medium);
+      margin: 5px 0;
+    }
+
+    .academic-block a {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 1.5em;
+      font-weight: 500;
+      color: var(--primary-green);
+      text-decoration: none;
+      transition: font-weight 0.3s ease;
+    }
+
+    .academic-block a:hover {
+      font-weight: bold;
+    }
+
+    .gpa {
+      color: var(--primary-green) !important;
+      font-weight: bold;
+      margin: 15px 0 20px !important;
+    }
+
+    /* === CONTACT SECTION === */
     .contact-section {
-      background-color: #1e9258;
+      background-color: var(--primary-green);
       height: 200px;
       display: flex;
       justify-content: space-between;
@@ -498,129 +481,132 @@
       font-size: 2em;
       margin: 0;
       font-weight: bold;
-      color: #ebfff5;
+      color: var(--light-green);
     }
 
     .contact-section a {
       font-size: 1.2em;
       text-decoration: none;
       font-weight: 500;
-      color: #ebfff5;
+      color: var(--light-green);
+      transition: font-weight 0.3s ease;
     }
 
     .contact-section a:hover {
       font-weight: bold;
     }
 
-  @media (max-width: 768px) {
-    .about-blurb,
-    .edu-block p,
-    .edu-block a,
-    .journey-card p,
-    .pill,
-    .course-detail p,
-    .course-detail h3,
-    .course-prompt,
-    .contact-section h2,
-    .contact-section a {
-      font-size: 1em !important;
-    }
+    /* === RESPONSIVE DESIGN === */
+    @media (max-width: 768px) {
+      .academic-block p,
+      .academic-block a,
+      .journey-card p,
+      .pill,
+      .course-detail p,
+      .course-detail h3,
+      .course-prompt,
+      .contact-section h2,
+      .contact-section a,
+      .about-text {
+        font-size: 1em !important;
+      }
 
-    h2, h3, h4 {
-      font-size: 1.4em !important;
-    }
+      h2, h3, h4 {
+        font-size: 1.4em !important;
+      }
 
-    h1 {
-      font-size: 2.5em !important;
-    }
+      h1 {
+        font-size: 2.5em !important;
+      }
 
-    .profile-pic {
-      width: 250px;
-      height: 375px;
-    }
+      .profile-pic {
+        width: 250px;
+        height: 375px;
+      }
 
-    .text {
-      padding: 10px;
-      text-align: center;
-    }
+      .hero-text {
+        padding: 10px;
+        text-align: center;
+      }
 
-    .nav {
-      gap: 15px;
-      padding: 15px 0;
-    }
+      .nav {
+        gap: 15px;
+        padding: 15px 0;
+      }
 
-    nav a {
-      font-size: 1.2em;
-      padding: 6px 12px;
-    }
+      .nav a {
+        font-size: 1.2em;
+        padding: 6px 12px;
+      }
 
-    .about-blurb {
-      font-size: 1.1em;
-      padding: 10px;
-    }
+      .center-node {
+        width: 100px;
+        height: 100px;
+        font-size: 1.2em;
+      }
 
-    .center-node {
-      width: 100px;
-      height: 100px;
-      font-size: 1.2em;
-    }
+      .orbit-node {
+        position: static !important;
+        width: 150px !important;
+        height: 75px !important;
+        font-size: 1em;
+        border-width: 3px;
+        transform: none !important;
+        margin: 10px;
+      }
 
-    .orbit-node {
-      position: static !important;
-      width: 150px !important;
-      height: 75px !important;
-      font-size: 1em;
-      border-width: 3px;
-      transform: none !important;
-      position: relative;
-      margin: 10px;
-    }
+      .skills-map {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        overflow-x: auto;
+      }
 
-    .memap {
-      align-items: center;
-      width: 100%;
-      height: auto;
-      flex-direction: column;
-      overflow-x: auto;
-    }
+      .journey-card video, 
+      .journey-card img {
+        max-height: 300px;
+      }
 
-    .journey-card video, .journey-card img {
-      max-height: 300px;
-    }
+      .semester {
+        flex: 0 0 80vw;
+      }
 
-    .pill {
-      font-size: 1em;
-      padding: 6px 10px;
-    }
+      .contact-section {
+        flex-direction: column;
+        height: auto;
+        padding: 30px 20px;
+        gap: 15px;
+        text-align: center;
+      }
 
-    .semester {
-      flex: 0 0 80vw;
-    }
+      .section {
+        padding: 40px 15px;
+      }
 
-    .contact-section {
-      flex-direction: column;
-      height: auto;
-      padding: 30px 20px;
-      gap: 15px;
-      text-align: center;
+      .about-section {
+        padding: 60px 20px;
+      }
+
+      .scroll-section {
+        padding: 60px 20px;
+      }
     }
-  }
-    
   </style>
 </head>
 <body>
+  <div class="green-trim"></div>
 
-  <div class="green-trim top-trim"></div>
-
-  <div class="profile">
-    <div class="text">
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-text">
       <h1>hir panchal</h1>
       <h2>second-year computer science student</h2>
       <h3>@ northeastern university</h3>
     </div>
     <img src="media/profile.jpg" alt="profile picture" class="profile-pic">
-  </div>
+  </section>
 
+  <!-- NAVIGATION -->
   <nav class="nav">
     <a href="home.html">home</a> 
     <a href="#about-me">about me</a> 
@@ -631,17 +617,16 @@
 
   <a href="#top" class="floating-home">home</a>
 
-  <section id="about-me">
+  <!-- ABOUT SECTION -->
+  <section id="about-me" class="about-section">
     <div class="about-layout">
-      <div class="about-blurb">
+      <div class="about-text">
         <h2>about me</h2>
-        <p> 
-          i'm interested in building tech that matters, and i ultimately hope to pursue a career at the intersection of innovation and impact. 
-          i'm currently searching for a fall 2025 co-op to build technical experience and explore real-world niches.</p>
+        <p>i'm interested in building tech that matters, and i ultimately hope to pursue a career at the intersection of innovation and impact. i'm currently searching for a fall 2025 co-op to build technical experience and explore real-world niches.</p>
         <a href="#journey" class="journey-button">my journey</a>
       </div>
-  
-      <div class="memap">
+      
+      <div class="skills-map">
         <div class="center-node">hir</div>
         <a href="#academics" class="orbit-node"><span>academics</span></a>
         <a href="#extracurriculars" class="orbit-node"><span>extracurriculars</span></a>
@@ -652,51 +637,43 @@
     </div>
   </section>
 
-  <section id="journey" class="journey-scroll">
+  <!-- JOURNEY SECTION -->
+  <section id="journey" class="scroll-section">
     <h2>my journey (so far)</h2>
     <div class="scroll-wrapper">
-      <div class="card-scroll-container">
+      <div class="scroll-container">
         <div class="journey-card">
           <video muted playsinline preload="metadata" autoplay loop>
             <source src="media/finalrobotgame.mp4" type="video/mp4">
           </video>
-          <p>in middle school, robotics was life.  
-            this was our final robot game my last year. 
-            i was the coding lead of an all-girls team for two years.
-            my team made it to state both years, and in my last year, earned a spot at the (global) open invitationals.  
-          </p>
+          <p>in middle school, robotics was life. this was our final robot game my last year. i was the coding lead of an all-girls team for two years. my team made it to state both years, and in my last year, earned a spot at the (global) open invitationals.</p>
         </div>
         <div class="journey-card">
-          <img src="media/winner.jpg">
+          <img src="media/winner.jpg" alt="Team award ceremony">
           <p>my team won an award for teamwork at the open invitational!</p>
         </div>
         <div class="journey-card">
-          <img src="media/gssm.jpg">
-          <p>in tenth grade, i applied, was accepted, and commited to a two-year STEM residential high school for eleventh and twelfth grade.
-            i thrived living with my peers in a like-minded community that provided unmatched academic and growth opportunity. 
-          </p>
+          <img src="media/gssm.jpg" alt="GSSM campus">
+          <p>in tenth grade, i applied, was accepted, and commited to a two-year STEM residential high school for eleventh and twelfth grade. i thrived living with my peers in a like-minded community that provided unmatched academic and growth opportunity.</p>
         </div>
         <div class="journey-card">
-          <img src="media/ambassador.jpg">
-          <p>i explored as many niches as possible. alongside taking advanced courses across academic subjects, 
-            i was involved and became a student leader through my roles as a student ambassador and FBLA chapter president.
-          </p>
+          <img src="media/ambassador.jpg" alt="Student ambassador photo">
+          <p>i explored as many niches as possible. alongside taking advanced courses across academic subjects, i was involved and became a student leader through my roles as a student ambassador and FBLA chapter president.</p>
         </div>
         <div class="journey-card">
-          <img src="media/admission.jpg">
-          <p>despite all i learned, i still love to code! i wanted to major in computer science and learn more, but strive to do something with impact.
-            i took the leap to move to boston and attend northeastern university, where i am now. 
-          </p>
+          <img src="media/admission.jpg" alt="University admission">
+          <p>despite all i learned, i still love to code! i wanted to major in computer science and learn more, but strive to do something with impact. i took the leap to move to boston and attend northeastern university, where i am now.</p>
         </div>
       </div>
       <div class="scroll-arrow">→</div>
     </div>
   </section>
 
-  <section id="academics" class="academics-section">
-    <h2>academics</h2>
-  
-    <div class="edu-block">
+  <!-- ACADEMICS SECTION -->
+  <section id="academics" class="section academic-section">
+    <h2 class="section-title">academics</h2>
+    
+    <div class="academic-block">
       <h3>northeastern university</h3>
       <h4>khoury college of computer sciences</h4>
       <p><strong>class of 2027</strong></p>
@@ -706,8 +683,8 @@
       <p><strong>minor:</strong> corporate innovation</p>
       <p class="gpa">gpa: 3.841</p>
     </div>
-  
-    <div class="edu-block">
+    
+    <div class="academic-block">
       <h3>south carolina</h3>
       <h4>governor's school of science & mathematics</h4>
       <p><strong>class of 2023</strong></p>
@@ -716,11 +693,11 @@
     </div>
   </section>
 
-  <section id="coursework" class="coursework-section">
-    <h2>coursework</h2>
+  <!-- COURSEWORK SECTION -->
+  <section id="coursework" class="section">
+    <h2 class="section-title">coursework</h2>
     <div class="scroll-wrapper">
-      <div class="course-semester-grid">
-
+      <div class="scroll-container">
         <div class="semester">
           <h3>summer 1 2025</h3>
           <span class="pill" data-title="fundamentals of software engineering" data-description="explores modern software development practices including agile, testing, version control, design patterns, and project management"><strong>software engineering</strong></span>
@@ -757,7 +734,7 @@
           <span class="pill" data-title="intro to math reasoning" data-description="developed proof-writing skills and logical reasoning in mathematics">intro to math reasoning</span>
           <span class="pill" data-title="innovation!" data-description="encouraged creative thinking and problem-solving in technological and entrepreneurial contexts">innovation!</span>
         </div>
-  
+
         <div class="semester">
           <h3>fall 2023</h3>
           <span class="pill" data-title="fundamentals of cs 1" data-description="introduced systematic problem-solving through functional programming using Racket. emphasized recursion, data definitions, abstraction, and the development of robust software"><strong>fundamentals of cs 1</strong></span>
@@ -765,24 +742,24 @@
           <span class="pill" data-title="calculus 1" data-description="explored limits, derivatives, and integrals of single-variable functions">calculus 1</span>
           <span class="pill" data-title="of princes and utopias" data-description="analyzed political philosophy texts, examining concepts of ideal societies and governance">of princes and utopias</span>
         </div>
-  
       </div>
       <div class="scroll-arrow">→</div>
     </div>
+    
     <div class="course-prompt" id="course-prompt">
       <p>click on any course to learn more!</p>
     </div>
-    <div class="course-detail" id="course-detail" style="display: none;">
+    <div class="course-detail" id="course-detail">
       <h3 id="course-title">course title</h3>
       <p id="course-description">description will go here</p>
     </div>
   </section>
 
-  <section id="skills" class="coursework-section">
-    <h2>skills</h2>
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="section">
+    <h2 class="section-title">skills</h2>
     <div class="scroll-wrapper">
-      <div class="course-semester-grid skills-grid">
-
+      <div class="scroll-container">
         <div class="semester">
           <h3>languages</h3>
           <span class="pill">Python</span>
@@ -793,7 +770,7 @@
           <span class="pill">CSS</span>
           <span class="pill">JavaScript</span>
         </div>
-  
+
         <div class="semester">
           <h3>tools & platforms</h3>
           <span class="pill">Linux</span>
@@ -803,7 +780,7 @@
           <span class="pill">VS Code</span>
           <span class="pill">GitHub</span>
         </div>
-  
+
         <div class="semester">
           <h3>technical competencies</h3>
           <span class="pill">machine learning techniques</span>
@@ -814,7 +791,7 @@
           <span class="pill">networking fundamentals</span>
           <span class="pill">cloud computing</span>
         </div>
-  
+
         <div class="semester">
           <h3>product</h3>
           <span class="pill">ideation</span>
@@ -825,7 +802,7 @@
           <span class="pill">design thinking</span>
           <span class="pill">documentation</span>
         </div>
-  
+
         <div class="semester">
           <h3>interpersonal</h3>
           <span class="pill">leadership</span>
@@ -834,70 +811,65 @@
           <span class="pill">relationship building</span>
           <span class="pill">presentations</span>
         </div>
-  
       </div>
       <div class="scroll-arrow">→</div>
     </div>
-  </section>  
-  
-  <section id="extracurriculars" class="academics-section">
-    <h2>extracurriculars</h2>
-    <div class="edu-block">
+  </section>
+
+  <!-- EXTRACURRICULARS SECTION -->
+  <section id="extracurriculars" class="section academic-section">
+    <h2 class="section-title">extracurriculars</h2>
+    
+    <div class="academic-block">
       <h3>news correspondent</h3>
       <h4>the huntington news, independent student newspaper</h4>
-      <p>engage in meaningful conversations with individuals across different backgrounds, including artists, activists, and industry experts 
-        to capture diverse perspectives and connect broader themes to everyday experiences</p>
+      <p>engage in meaningful conversations with individuals across different backgrounds, including artists, activists, and industry experts to capture diverse perspectives and connect broader themes to everyday experiences</p>
       <p>develop compelling content by synthesizing complex topics using strong communication and storytelling skills</p>
       <a href="https://huntnewsnu.com/staff_name/hir-panchal/" target="_blank">read my content!</a>
     </div>
-    <div class="edu-block">
+    
+    <div class="academic-block">
       <h3>volunteer student mentor</h3>
       <h4>boston partners in education</h4>
-      <p>maintain a rapport with a Kindergarten and 2nd-grade classroom of 20 through weekly hour-long sessions.
-        engage students in fostering social connections through activities like reading, math games, and conversation</p>
-      <p>serve as an additional positive, adult role model in the classroom, exemplifying the organization’s mission</p>
+      <p>maintain a rapport with a Kindergarten and 2nd-grade classroom of 20 through weekly hour-long sessions. engage students in fostering social connections through activities like reading, math games, and conversation</p>
+      <p>serve as an additional positive, adult role model in the classroom, exemplifying the organization's mission</p>
     </div>
-    <div class="edu-block">
+    
+    <div class="academic-block">
       <h3>fbla chapter president</h3>
       <h4>sc governor's school of science & mathematics</h4>
       <p class="gpa">high school experience</p>
-      <p>recruited 12 members initially and increased club membership by 500% the following year. 
-        developed a 4-member leadership team and created a club culture of creating opportunity for valuable business experience</p>
+      <p>recruited 12 members initially and increased club membership by 500% the following year. developed a 4-member leadership team and created a club culture of creating opportunity for valuable business experience</p>
       <p>achieved consistent competition success, with over 90% of members qualifying for nationals</p>
-      <p>pioneered 2 initiatives to connect members to business leaders; hosted 3-4 business speakers per semester, 
-        launched a service project supporting small businesses with the local chamber of commerce </p>
+      <p>pioneered 2 initiatives to connect members to business leaders; hosted 3-4 business speakers per semester, launched a service project supporting small businesses with the local chamber of commerce</p>
     </div>
   </section>
 
-  <section id="adventures" class="journey-scroll">
+  <!-- ADVENTURES SECTION -->
+  <section id="adventures" class="scroll-section">
     <h2>adventures</h2>
     <div class="scroll-wrapper">
-      <div class="card-scroll-container adventures-grid">
+      <div class="scroll-container">
         <div class="journey-card">
-          <img src="media/pilot.jpg">
-          <p>took a two-week long glider piloting course in my interim semester of eleventh grade. 
-            logged 27 flight hours, completed a solo flight, and earned a student pilot license! 
-          </p>
+          <img src="media/pilot.jpg" alt="Glider pilot training">
+          <p>took a two-week long glider piloting course in my interim semester of eleventh grade. logged 27 flight hours, completed a solo flight, and earned a student pilot license!</p>
         </div>
         <div class="journey-card">
-          <img src="media/seattle.jpg">
-          <p>spent a summer term in seattle. frolicked, explored, ate good food, all while taking courses! 
-            this was the view from our roof :)
-          </p>
+          <img src="media/seattle.jpg" alt="Seattle skyline view">
+          <p>spent a summer term in seattle. frolicked, explored, ate good food, all while taking courses! this was the view from our roof :)</p>
         </div>
         <div class="journey-card">
-          <p>soon: a 4-week study abroad program in sydney, australia!
-          </p>
+          <p>soon: a 4-week study abroad program in sydney, australia!</p>
         </div>
       </div>
       <div class="scroll-arrow">→</div>
     </div>
   </section>
-  
 
+  <!-- CONTACT SECTION -->
   <section id="contact" class="contact-section">
     <div class="contact-left">
-      <h2>let’s connect!</h2>
+      <h2>let's connect!</h2>
       <a href="mailto:panchal.hi@northeastern.edu">panchal.hi@northeastern.edu</a>
     </div>
     <div class="contact-right">
@@ -906,28 +878,32 @@
     </div>
   </section>
 
-  <div class="green-trim bottom-trim"></div>
+  <div class="green-trim"></div>
 
   <script>
-    // fade in page and animate elements
-    window.addEventListener("DOMContentLoaded", () => {
+    // Page initialization and animations
+    document.addEventListener("DOMContentLoaded", () => {
+      // Fade in page
       requestAnimationFrame(() => {
         document.body.style.opacity = "1";
       });
+      
+      // Staggered animations
       setTimeout(() => {
-        document.querySelector(".text").classList.add("active");
+        document.querySelector(".hero-text").classList.add("active");
       }, 750);
+      
       setTimeout(() => {
         document.querySelector(".nav").classList.add("active");
       }, 1500);
     });
 
-    // fade out on any link click
+    // Fade out navigation for external links
     document.querySelectorAll(".fade-link").forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const href = link.getAttribute('href');
-        // fade out after pause
+        
         setTimeout(() => {
           document.body.style.opacity = "0";
         }, 500);
@@ -938,55 +914,68 @@
       });
     });
 
-    // coursework detail pill click
-    const pills = document.querySelectorAll('.pill');
+    // Coursework detail functionality
+    const pills = document.querySelectorAll('.pill[data-title]');
     const detailBox = document.getElementById('course-detail');
     const titleEl = document.getElementById('course-title');
     const descEl = document.getElementById('course-description');
     const coursePrompt = document.getElementById('course-prompt');
     let hasClicked = false;
+
     pills.forEach(pill => {
       pill.addEventListener('click', () => {
         const title = pill.getAttribute('data-title');
         const desc = pill.getAttribute('data-description');
-        titleEl.textContent = title;
-        descEl.textContent = desc;
-        detailBox.style.display = 'block';
-        if (!hasClicked) {
-          coursePrompt.style.display = 'none';
-          hasClicked = true;
+        
+        if (title && desc) {
+          titleEl.textContent = title;
+          descEl.textContent = desc;
+          detailBox.style.display = 'block';
+          
+          if (!hasClicked) {
+            coursePrompt.style.display = 'none';
+            hasClicked = true;
+          }
         }
       });
     });
 
-    const homebutton = document.querySelector('.floating-home');
-    const triggerPoint = 800; // px to scroll before showing
+    // Floating home button
+    const homeButton = document.querySelector('.floating-home');
+    const triggerPoint = 800;
+
     window.addEventListener('scroll', () => {
       if (window.scrollY > triggerPoint) {
-        homebutton.style.opacity = '1';
-        homebutton.style.pointerEvents = 'auto';
+        homeButton.style.opacity = '1';
+        homeButton.style.pointerEvents = 'auto';
       } else {
-        homebutton.style.opacity = '0';
-        homebutton.style.pointerEvents = 'none';
+        homeButton.style.opacity = '0';
+        homeButton.style.pointerEvents = 'none';
       }
     });
 
-    // hide scroll arrow when scrolled
-    function setupScrollArrow(containerSelector) {
-      const container = document.querySelector(containerSelector);
-      const arrow = container?.nextElementSibling;
-      if (container && arrow) {
-        container.addEventListener('scroll', () => {
-          if (container.scrollLeft > 30) {
-            arrow.style.opacity = '0';
-          }
-        });
-      }
+    // Universal scroll arrow functionality
+    function setupScrollArrows() {
+      const scrollWrappers = document.querySelectorAll('.scroll-wrapper');
+      
+      scrollWrappers.forEach(wrapper => {
+        const container = wrapper.querySelector('.scroll-container');
+        const arrow = wrapper.querySelector('.scroll-arrow');
+        
+        if (container && arrow) {
+          container.addEventListener('scroll', () => {
+            if (container.scrollLeft > 30) {
+              arrow.style.opacity = '0';
+            } else {
+              arrow.style.opacity = '1';
+            }
+          });
+        }
+      });
     }
-    setupScrollArrow('.card-scroll-container');
-    setupScrollArrow('.course-semester-grid');
-    setupScrollArrow('.skills-grid');
-    setupScrollArrow('.adventures-grid');
+
+    // Initialize scroll arrows
+    setupScrollArrows();
   </script>
 </body>
 </html>
